@@ -12,14 +12,15 @@ class ScreenLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return BasicScaffold(
+      backgroundColor: kColorPurple,
       body: Center(
         child: Column(
           children: [
             const Spacer(),
             getSvgImage(
               path: kImageIcon,
-              height: SizeConfig.screenWidth / 2,
-              width: SizeConfig.screenWidth / 2,
+              height: SizeConfig.screenWidth / 1.5,
+              width: SizeConfig.screenWidth / 1.5,
             ),
             SizedBox(height: SizeConfig.blockSizeVertical * 4),
             Text(

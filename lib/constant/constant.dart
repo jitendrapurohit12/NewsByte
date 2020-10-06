@@ -1,4 +1,6 @@
 // Image Paths
+import 'package:flutter/material.dart';
+
 const imageBasePath = 'assets/images';
 const kImageIcon = '$imageBasePath/newspaper.svg';
 
@@ -25,3 +27,6 @@ const kSources = 'Sources';
 const kFontVarela = 'Varela';
 const kFontDirga = 'Dirga';
 const kFontHalaney = 'Halaney';
+
+// Colors
+const kColorPurple = Color(0xFF6C63FF);

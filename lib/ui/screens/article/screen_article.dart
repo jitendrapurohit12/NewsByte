@@ -38,10 +38,11 @@ Widget _body({BuildContext context, Articles model}) {
       delegate: SliverChildListDelegate(
         [
           SizedBox(height: SizeConfig.blockSizeVertical * 2),
-          Text(model.description, style: Theme.of(context).textTheme.headline5),
+          Text(model?.description ?? '',
+              style: Theme.of(context).textTheme.headline5),
           SizedBox(height: SizeConfig.blockSizeVertical),
           Text(
-            model.content,
+            model?.content ?? '',
             style: Theme.of(context).textTheme.headline6,
           ),
           SizedBox(height: SizeConfig.blockSizeVertical * 4),

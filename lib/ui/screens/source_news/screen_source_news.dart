@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:news_shot/helper/platform_widgets.dart';
 import 'package:news_shot/helper/size_config.dart';
 import 'package:news_shot/helper/ui_helper.dart';
@@ -19,36 +21,56 @@ class ScreenSourceNews extends StatelessWidget {
 
     final source = args['source'] as Sources;
 
-    return BasicScaffold(body: Consumer<SourceNewsNotifier>(
-      builder: (_, notifier, __) {
-        return CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: SizeConfig.blockSizeVertical * 8),
-                  Hero(
-                    tag: source.id,
-                    child: getheadingWidget(
-                      context: context,
-                      title: source.name,
+    return BasicScaffold(
+      body: Consumer<SourceNewsNotifier>(
+        builder: (_, notifier, __) {
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: SizeConfig.blockSizeVertical * 8),
+                    Row(
+                      children: [
+                        SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
+                        PlatformWidget(
+                          cupertino: (_, __) => IconButton(
+                            icon: const Icon(Icons.arrow_back_ios),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                          material: (_, __) => IconButton(
+                            icon: const Icon(Icons.arrow_back),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ),
+                        Expanded(
+                          child: Hero(
+                            tag: source.id,
+                            child: getheadingWidget(
+                              context: context,
+                              title: source.name,
+                              padding: 0.0,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: SizeConfig.blockSizeVertical),
-                ],
+                    SizedBox(height: SizeConfig.blockSizeVertical),
+                  ],
+                ),
               ),
-            ),
-            _newsWidget(
-              context: context,
-              notifier: notifier,
-              source: source.id,
-            ),
-          ],
-        );
-      },
-    ));
+              _newsWidget(
+                context: context,
+                notifier: notifier,
+                source: source.id,
+              ),
+            ],
+          );
+        },
+      ),
+    );
   }
 }
 

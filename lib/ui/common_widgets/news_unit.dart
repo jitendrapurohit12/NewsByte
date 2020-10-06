@@ -49,7 +49,7 @@ class NewsUnit extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: Text(
-                          model.title,
+                          model?.title ?? '',
                           style: Theme.of(context)
                               .textTheme
                               .headline6

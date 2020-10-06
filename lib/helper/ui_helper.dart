@@ -92,11 +92,13 @@ Widget errorText({@required BuildContext context}) {
 Widget getheadingWidget({
   @required BuildContext context,
   @required String title,
+  double padding,
 }) {
   assert(title != null);
   assert(context != null);
   return Padding(
-    padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 8),
+    padding:
+        EdgeInsets.only(left: padding ?? SizeConfig.blockSizeHorizontal * 8),
     child: Text(
       title.toUpperCase(),
       style: Theme.of(context)
